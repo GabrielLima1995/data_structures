@@ -68,7 +68,28 @@ class BinaryTree:
         else:
             return hleft + 1
 
+    def levelorder_traversal(self,node=None):
+        
+        if node is None:
+            node = self.root
+
+        queue=[]
+        queue.append(node)
+
+        while len(queue):
+
+            node = queue[0]
+            queue.pop(0)
+
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+            print(node)
+
+            
 class BinarySearchTree(BinaryTree):
+     
 
     def insert(self,value):
         parent=None
@@ -102,10 +123,6 @@ class BinarySearchTree(BinaryTree):
 
 
 
-            
-
-
-
 if __name__ == "__main__":
 
    tree = BinarySearchTree()
@@ -129,6 +146,6 @@ if __name__ == "__main__":
    #tree.simetric_traversal()
    #print(tree.root)
    #print('postorder_traversal')
-   tree.simetric_traversal()
+   tree.levelorder_traversal()
 
 
