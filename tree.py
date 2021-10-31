@@ -36,7 +36,24 @@ class BinaryTree:
         print(node)
 
         if node.right:
-            self.simetric_traversal(node.right)        
+            self.simetric_traversal(node.right)   
+    
+    def simetric_traversal_arr(self,node='ROOT',arr=[]):
+      #inorder travessal returning an array 
+      
+      if node == 'ROOT':
+        node = self.root 
+        arr =[]
+ 
+      if node.left:
+          self.simetric_traversal_arr(node.left,arr)
+        
+      arr.append(node.data)
+
+      if node.right:
+        self.simetric_traversal_arr(node.right,arr) 
+        
+        return arr     
     
     def postorder_traversal(self,node='ROOT'):
         
@@ -176,18 +193,18 @@ if __name__ == "__main__":
 
     # --- For loop insert
 
-    values = [10,8,63,2,9,60]
+    values = [10,8,63,2,9,60,82]
 
     for i in values:
         tree.insert(i)
 
 
-    tree.simetric_traversal()
+    print(tree.simetric_traversal_arr())
 
     print('\n--------')
     tree.remove(10)
 
-    tree.simetric_traversal() 
+    print(tree.simetric_traversal_arr() )
     print('\n--------')
     tree.levelorder_traversal()
         
